@@ -400,7 +400,7 @@ const crearFiltro = (productsList) => {
   const value = []
 
   for (const product of selectOption) {
-    if (!value.includes(product.series)) {
+    if (!value.includes(product)) {
       value.push(product)
       const option = document.createElement('option')
       option.value = product
@@ -424,7 +424,7 @@ const crearFiltro = (productsList) => {
   clearButton.classList.add('filterButton')
   clearButton.textContent = 'Limpiar'
   clearButton.addEventListener('click', () => {
-    seriesSelect.value = 'Todos'
+    seriesSelect.value = selectOption[0]
 
     priceInput.value = ''
 
@@ -485,8 +485,6 @@ crearProductos(productsList)
 
 // FUNCION BÚSCADOR
 const aplicarFiltros = () => {
-  const filterButton = document.querySelector('.filterButton')
-  filterButton.addEventListener('click', aplicarFiltros)
   const filterContainer = document.querySelector('.filter')
   const seriesSelect = filterContainer.querySelector('select')
   const inputValue = document.querySelector('input')
